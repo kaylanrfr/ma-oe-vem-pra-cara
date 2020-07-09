@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Show do milhão</title>
+
+  <link href="css.css" rel="stylesheet" />
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <header class="menu">
+    <div class="menu-block">
+      <a class="menu-logo" href=""><img src="logo.png" alt="" /></a>
+      <nav class="menu-nav">
+        <ul>
+          <li><a href="">Sobre</a></li>
+          <li><a href="">Pontos</a></li>
+          <li><a href="">Top 10</a></li>
+          <li><a href="">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="askbox">
+    <div class="play" id="play">
+      <button onclick="startNewGame()">JOGAR</button>
+      <div class="regras">
+        <div class="escrito">
+          <h1>Regras:</h1>
+          <p>
+            O programa consiste em três rodadas e uma pergunta final: a primeira contém 5 perguntas, cada uma valendo
+            mil reais cumulativos. A segunda, de 5 perguntas valendo R$ 10 mil cumulativos cada. A terceira, de 5
+            perguntas de R$100 mil reais cumulativos cada. A última pergunta vale R$ 1 milhão.</p>
+            <p>O participante tem direito de pular a pergunta por até três vezes, exceto durante a ultima pergunta onde não se pode pular.</p>
+            <p>Não sabendo a resposta, pode-se desistir recebendo o valor total arrecadado até a pergunta.</p>
+            <p>Ao errar, recebe-se metade do valor total arrecadado, exceto durante a última pergunta, onde ao errar o participante perde absolutamente tudo!!</p>            
+          </p>
+        </div>
+        <table class="wikitable">
+          <tbody>
+            <tr>
+              <th></th>
+              <th>Acertar</th>
+              <th>Parar</th>
+              <th>Errar
+              </th>
+            </tr>
+            <tr>
+              <td style="background: #FFE09F">1</td>
+              <td>R$ 1 mil</td>
+              <td>R$ 0</td>
+              <td>R$ 0
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFE09F">2
+              </td>
+              <td>R$ 2 mil
+              </td>
+              <td>R$ 1 mil</td>
+              <td>R$ 500
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFE09F">3</td>
+              <td>R$ 3 mil</td>
+              <td>R$ 2 mil</td>
+              <td>R$ 1 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFE09F">4</td>
+              <td>R$ 4 mil</td>
+              <td>R$ 3 mil</td>
+              <td>R$ 1.500
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFE09F">5</td>
+              <td>R$ 5 mil</td>
+              <td>R$ 4 mil</td>
+              <td>R$ 2 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFDA8C">6</td>
+              <td>R$ 10 mil</td>
+              <td>R$ 5 mil</td>
+              <td>R$ 2.500
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFDA8C">7</td>
+              <td>R$ 20 mil</td>
+              <td>R$ 10 mil</td>
+              <td>R$ 5 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFDA8C">8</td>
+              <td>R$ 30 mil</td>
+              <td>R$ 20 mil</td>
+              <td>R$ 10 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFDA8C">9</td>
+              <td>R$ 40 mil</td>
+              <td>R$ 30 mil</td>
+              <td>R$ 15 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFDA8C">10</td>
+              <td>R$ 50 mil</td>
+              <td>R$ 40 mil</td>
+              <td>R$ 20 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFD275">11</td>
+              <td>R$ 100 mil</td>
+              <td>R$ 50 mil</td>
+              <td>R$ 25 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFD275">12</td>
+              <td>R$ 200 mil</td>
+              <td>R$ 100 mil</td>
+              <td>R$ 50 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFD275">13</td>
+              <td>R$ 300 mil</td>
+              <td>R$ 200 mil</td>
+              <td>R$ 100 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFD275">14</td>
+              <td>R$ 400 mil</td>
+              <td>R$ 300 mil</td>
+              <td>R$ 150 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFD275">15</td>
+              <td>R$ 500 mil</td>
+              <td>R$ 400 mil</td>
+              <td>R$ 200 mil
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #FFCC66">16</td>
+              <td>R$ 1 milhão</td>
+              <td>R$ 500 mil</td>
+              <td>R$ 0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="game">
+      <h1>Acumulado: <span id="score"></span></h1>
+      <h1>
+        Rodada: <span id="level"></span> | Valendo: <span id="prize"></span>
+      </h1>
+      <button id="next" disabled onclick="handleNextQuestion()">
+        PROXIMA
+      </button>
+      <button onclick="giveUp()">DESISTIR</button>
+      <button id="skip" disabled onclick="skipQuestion()">Pular</button>
+      <h2>Pergunta: </h2>
+      <h1><span id="validation"></span></h1>
+      <h3 id="question"></h3>
+      <ul id="answers"></ul>
+      <span id="validation"></span>
+    </div>
+  </section>
+</body>
+
+</html>
